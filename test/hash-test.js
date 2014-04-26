@@ -61,4 +61,36 @@ describe('Hash', function() {
       assert.equal(dgst, res);
     }
   });
+
+  it('should support ripemd160', function() {
+    assert.equal(hash.ripemd160.blockSize, 512);
+    assert.equal(hash.ripemd160.outSize, 160);
+
+    var test = [
+      [ '', '9c1185a5c5e9fc54612808977ee8f548b2258d31'],
+      [ 'abc',
+        '8eb208f7e05d987a9b044a8e98c6b087f15a0bfc' ],
+      [ 'message digest',
+        '5d0689ef49d2fae572b881b123a85ffa21595f36' ],
+      [ 'abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq',
+        '12a053384a9c0c88e405a06c27dcf49ada62eb2b' ],
+      [ 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+        'b0e20b6e3116640286ed3a87a5713079b21f5189' ],
+    ];
+    for (var i = 0; i < test.length; i++) {
+      var msg = test[i][0];
+      var res = test[i][1];
+      var enc = test[i][2];
+
+      var dgst = hash.ripemd160().update(msg, enc).digest('hex');
+      assert.equal(dgst, res);
+
+      // Split message on odd boundary
+      var dgst = hash.ripemd160()
+                     .update(msg.slice(0, 3), enc)
+                     .update(msg.slice(3), enc)
+                     .digest('hex');
+      assert.equal(dgst, res);
+    }
+  });
 });
