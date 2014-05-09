@@ -22,6 +22,9 @@
     "url": "https://github.com/indutny/hash.js/issues"
   },
   "homepage": "https://github.com/indutny/hash.js",
+  "dependencies": {
+    "inherits": "^2.0.1"
+  },
   "devDependencies": {
     "mocha": "^1.18.2"
   }
