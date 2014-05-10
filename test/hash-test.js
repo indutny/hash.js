@@ -93,4 +93,36 @@ describe('Hash', function() {
       assert.equal(dgst, res);
     }
   });
+
+  it('should support sha1', function() {
+    assert.equal(hash.sha1.blockSize, 512);
+    assert.equal(hash.sha1.outSize, 160);
+
+    var test = [
+      [ '',
+        'da39a3ee5e6b4b0d3255bfef95601890afd80709' ],
+      [ 'abc',
+        'a9993e364706816aba3e25717850c26c9cd0d89d' ],
+      [ 'abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq',
+        '84983e441c3bd26ebaae4aa1f95129e5e54670f1' ],
+      [ 'deadbeef',
+        'd78f8bb992a56a597f6c7a1fb918bb78271367eb',
+        'hex' ],
+    ];
+    for (var i = 0; i < test.length; i++) {
+      var msg = test[i][0];
+      var res = test[i][1];
+      var enc = test[i][2];
+
+      var dgst = hash.sha1().update(msg, enc).digest('hex');
+      assert.equal(dgst, res);
+
+      // Split message
+      var dgst = hash.sha1()
+                     .update(msg.slice(0, 2), enc)
+                     .update(msg.slice(2), enc)
+                     .digest('hex');
+      assert.equal(dgst, res);
+    }
+  });
 });
