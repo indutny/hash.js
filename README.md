@@ -2,6 +2,15 @@
 
 Just a bike-shed.
 
+## Install
+
+    npm install hash.js
+
+## Usage
+
+    var hash = require('hash.js')
+    hash.sha256().update('abc').digest('hex')
+
 #### LICENSE
 
 This software is licensed under the MIT License.
