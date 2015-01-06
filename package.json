@@ -1,6 +1,6 @@
 {
   "name": "hash.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Various hash functions that could be run by both browser and node",
   "main": "lib/hash.js",
   "scripts": {
