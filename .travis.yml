@@ -4,7 +4,7 @@ node_js:
   - "0.10"
   - "0.11"
   - "4"
-  - "8"
+  - "6"
   - "stable"
 branches:
   only:
