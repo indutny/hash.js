@@ -1,7 +1,7 @@
 declare var hash: Hash;
 
 declare module "hash.js" {
-    export default hash;
+    export = hash;
 }
 
 interface BlockHash<T> {
@@ -13,8 +13,10 @@ interface BlockHash<T> {
 interface MessageDigest<T> {
     blockSize: number
     outSize: number
-    update(msg: any, enc?: 'hex'): T
-    digest(enc?: 'hex'): T
+    update(msg: number[]): T
+    update(msg: string, enc?: 'hex'): T
+    digest(): number[]
+    digest(enc: 'hex'): string
 }
 
 interface Hash {
@@ -31,8 +33,9 @@ interface Hash {
 }
 
 interface Utils {
-    toArray(msg: any, enc: 'hex'): Array<number>
-    toHex(msg: any): string
+    toArray(msg: number[]): number[]
+    toArray(msg: string, enc?: 'hex'): number[]
+    toHex(msg: number[]): string
 }
 
 interface RipemdSet {
@@ -47,7 +50,10 @@ interface ShaSet {
     sha512: Sha512Constructor
 }
 
-interface HmacConstructor { (hash: BlockHash<any>, key: any, enc?: 'hex'): Hmac }
+interface HmacConstructor { 
+    (hash: BlockHash<any>, key: number[]): Hmac 
+    (hash: BlockHash<any>, key: string, enc?: 'hex'): Hmac 
+}
 interface Ripemd160Constructor { (): Ripemd160 }
 interface Sha1Constructor { (): Sha1; }
 interface Sha224Constructor { (): Sha224; }
