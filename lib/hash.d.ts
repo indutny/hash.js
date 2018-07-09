@@ -14,7 +14,7 @@ interface MessageDigest<T> {
     blockSize: number
     outSize: number
     update(msg: any, enc?: 'hex'): T
-    digest(enc?: 'hex'): T
+    digest(enc?: 'hex'): string
 }
 
 interface Hash {
