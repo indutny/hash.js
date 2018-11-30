@@ -128,8 +128,8 @@ describe('Hash', function() {
     test(hash[algorithm], [
       'hello', // one byte per character
       'привет', // two bytes per character
-      '您好',  // three bytes per character
-      '👋',  // four bytes per character
+      '您好', // three bytes per character
+      '👋', // four bytes per character
       'hello привет 您好 👋!!!' // mixed character lengths
     ].map(str => [str, crypto
       .createHash(algorithm)
