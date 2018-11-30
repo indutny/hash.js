@@ -126,11 +126,11 @@ describe('Hash', function() {
   it('handles utf8 in strings just like crypto', function() {
     const algorithm = 'sha256';
     test(hash[algorithm], [
-      'hello', // single byte
+      'hello', // one byte per character
       'привет', // two bytes per character
       '您好',  // three bytes per character
-      '😀',  // four bytes per character
-      'hello привет 您好 😀'
+      '👋',  // four bytes per character
+      'hello привет 您好 👋!!!' // mixed character lengths
     ].map(str => [str, crypto
       .createHash(algorithm)
       .update(str)
