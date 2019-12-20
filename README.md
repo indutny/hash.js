@@ -22,6 +22,11 @@ var sha512 = require('hash.js/lib/hash/sha/512');
 sha512().update('abc').digest('hex');
 ```
 
+```js
+var sm3 = require('hash.js/lib/hash/sm3');
+sm3().update('abc').digest('hex');
+```
+
 #### LICENSE
 
 This software is licensed under the MIT License.

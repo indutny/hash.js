@@ -28,6 +28,7 @@ interface Hash {
     sha256: Sha256Constructor
     sha384: Sha384Constructor
     sha512: Sha512Constructor
+    sm3: Sm3Constructor
     utils: Utils
 }
 
@@ -55,6 +56,7 @@ interface Sha224Constructor { (): Sha224; }
 interface Sha256Constructor { (): Sha256; }
 interface Sha384Constructor { (): Sha384; }
 interface Sha512Constructor { (): Sha512; }
+interface Sm3Constructor { (): Sm3; }
 
 interface Hmac extends MessageDigest<Hmac> {
     blockSize: 512
@@ -102,5 +104,12 @@ interface Sha512 extends BlockHash<Sha512>, MessageDigest<Sha512> {
     hmacStrength: 192
     outSize: 512
     padLength: 128
+    endian: 'big'
+}
+interface Sm3 extends BlockHash<Sm3>, MessageDigest<Sm3> {
+    blockSize: 512
+    hmacStrength: 192
+    outSize: 256
+    padLength: 64
     endian: 'big'
 }
