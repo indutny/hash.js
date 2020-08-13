@@ -5,8 +5,9 @@
   "main": "lib/hash.js",
   "typings": "lib/hash.d.ts",
   "scripts": {
-    "test": "mocha --reporter=spec test/*-test.js && npm run lint",
-    "lint": "eslint lib/*.js lib/**/*.js lib/**/**/*.js test/*.js"
+    "test": "mocha --require ts-node/register --watch-extensions ts,tsx --reporter=spec test/*-test.{js,ts} && npm run lint && npm run tslint",
+    "lint": "eslint lib/*.js lib/**/*.js lib/**/**/*.js test/*.js",
+    "tslint": "tslint --project test/tsconfig.json lib/**/*.d.ts lib/*.d.ts test/*.ts"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,12 @@
     "minimalistic-assert": "^1.0.1"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.0.0",
     "eslint": "^4.19.1",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "ts-node": "^6.0.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
   }
 }
