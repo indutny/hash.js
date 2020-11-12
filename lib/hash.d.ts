@@ -32,7 +32,7 @@ interface Hash {
 }
 
 interface Utils {
-    toArray(msg: any, enc: 'hex'): Array<number>
+    toArray(msg: any, enc?: 'hex'): Array<number>
     toHex(msg: any): string
 }
 
